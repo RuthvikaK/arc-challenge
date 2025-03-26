@@ -1,0 +1,35 @@
+from typing import List
+
+def solve(grid: List[List[int]]) -> List[List[int]]:
+    rows = len(grid)
+    cols = len(grid[0])
+    output = [[0] * (cols * 2) for _ in range(rows * 2)]
+
+    for r in range(rows):
+        for c in range(cols):
+            val = grid[r][c]
+            if val != 0:
+                for dr in range(2):
+                    for dc in range(2):
+                        output[r * 2 + dr][c * 2 + dc] = val
+
+    return output
+
+
+from typing import List
+
+def solve(grid: List[List[int]]) -> List[List[int]]:
+    rows = len(grid)
+    cols = len(grid[0]) if rows > 0 else 0
+    output = [[0] * cols for _ in range(rows)]
+    
+    for r in range(rows):
+        for c in range(cols):
+            if grid[r][c] == 1:
+                output[r][c] = 1
+            elif grid[r][c] == 8:
+                output[r][c] = 8
+            elif grid[r][c] == 7:
+                output[r][c] = 5
+    
+    return output

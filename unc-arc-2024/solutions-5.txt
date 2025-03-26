@@ -1,0 +1,13 @@
+from typing import List
+
+def solve(grid: List[List[int]]) -> List[List[int]]:
+    result = [row[:] for row in grid]
+    n = len(grid)
+    m = len(grid[0]) if n > 0 else 0
+
+    for i in range(n):
+        for j in range(m):
+            if grid[i][j] != 0:
+                result[n - 1 - i][j] = grid[i][j]
+    
+    return result

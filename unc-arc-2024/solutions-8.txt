@@ -1,0 +1,31 @@
+from typing import List
+
+def solve(grid: List[List[int]]) -> List[List[int]]:
+    rows = len(grid)
+    cols = len(grid[0])
+    output = [[0] * (cols * 3) for _ in range(rows * 3)]
+
+    for r in range(rows):
+        for c in range(cols):
+            value = grid[r][c]
+            if value != 0:
+                for dr in range(3):
+                    for dc in range(3):
+                        output[r * 3 + dr][c * 3 + dc] = value
+
+    return output
+
+
+from typing import List
+
+def solve(grid: List[List[int]]) -> List[List[int]]:
+    nrows = len(grid)
+    ncols = len(grid[0]) if nrows > 0 else 0
+    output = [[0] * ncols for _ in range(nrows)]
+    for r in range(nrows):
+        for c in range(ncols):
+            if grid[r][c] == 6:
+                output[r][c] = 2
+            else:
+                output[r][c] = grid[r][c]
+    return output
